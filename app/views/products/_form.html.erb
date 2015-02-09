@@ -11,23 +11,23 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field form-group">
     <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, html: {class: 'form-control'} %>
   </div>
-  <div class="field">
+  <div class="field form-group">
     <%= f.label :description %><br>
-    <%= f.text_area :description, rows: 6 %>
+    <%= f.text_area :description, rows: 6, html: {class: 'form-control'} %>
   </div>
-  <div class="field">
+  <div class="field form-group">
     <%= f.label :image_url %><br>
-    <%= f.text_field :image_url %>
+    <%= f.text_field :image_url, html: {class: 'form-control'} %>
   </div>
-  <div class="field">
+  <div class="field form-group">
     <%= f.label :price %><br>
-    <%= f.text_field :price %>
+    <%= f.text_field :price, html: {class: 'form-control'} %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Отослать!',  class: 'btn btn-default' %>
   </div>
 <% end %>
