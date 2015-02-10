@@ -7,4 +7,8 @@ class Product < ActiveRecord::Base
     with: %r{\.(gif|jpg|png)\Z}i,
     message: "Адрес должен оканчиваться на расширения png, jpg, gif"
   }
+  
+  def self.latest
+    return Product.order(:updated_at).last
+  end
 end

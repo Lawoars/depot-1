@@ -1,0 +1,24 @@
+<h1>Каталог</h1>
+<% cache ['store', Product.latest] do %>
+  <% @products.each do |product| %>
+    <% cache ['entry', product] do %>
+      <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2">
+              <%= image_tag(product.image_url, class: 'img-thumbnail') %>
+            </div>
+            <div class="col-md-8">
+              <h3><%= product.title %></h3>
+              <%= sanitize(product.description) %>
+            </div>
+            <div class="col-md-2">
+                <span class="text-center text-info"><h3><%= number_to_currency(product.price) %></h3></span>
+            </div>
+        </div>
+      </div>
+    <br />
+    <% end %>
+  <% end %>
+<% end %>
+
+
