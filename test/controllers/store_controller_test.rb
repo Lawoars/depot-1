@@ -8,7 +8,7 @@ class StoreControllerTest < ActionController::TestCase
     assert_select 'div h3', minimum: 3
     assert_select 'nav li', minimum: 2
     assert_select 'h1', 'Каталог'
-    assert_select 'span h3', '9,00 грн.'
+    assert_select 'h3', '9,00 грн.'
   end
 
 end

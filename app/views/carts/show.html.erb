@@ -1,0 +1,21 @@
+<h3>Корзина</h3>
+<p id="notice"><%= notice %></p>
+  <% @cart.line_items.each do |item| %>
+      <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2">
+              <%= image_tag(item.product.image_url, class: 'img-thumbnail') %>
+            </div>
+            <div class="col-md-7">
+              <h3><%= item.product.title %></h3>
+              <%= sanitize(item.product.description) %>
+            </div>
+            <div class="col-md-3">
+                <h3 class="text-center text-info"><%= number_to_currency(item.product.price, unit: "грн.", separator: ",", delimiter: "", format: "%n %u") %></h3>
+            </div>
+        </div>
+      </div>
+    <br />
+  <% end %>
+
+<%= link_to 'Продолжить покупки', store_path %>
