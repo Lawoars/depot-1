@@ -1,3 +1,4 @@
+<p id="notice" class="h4 text-warning"><%= notice %></p>
 <h1>Каталог</h1>
 <% cache ['store', Product.latest] do %>
   <% @products.each do |product| %>

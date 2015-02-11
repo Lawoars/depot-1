@@ -3,7 +3,7 @@ Depot::Application.routes.draw do
 
   resources :carts
   
-  get 'cart/:id' => 'carts#view'
+  #get 'cart/:id' => 'carts#view'
 
   get "store" => "store#index"
   resources :products
