@@ -1,0 +1,7 @@
+<h4>Корзина:</h4>
+
+  <%= render(partial: "line_items/line_item_small",locals: {line_item: cart.line_items}) %>
+
+<p class="text-right"><%= link_to 'Очистить корзину', @cart, method: :delete, class: 'btn btn-warning btn-xs', data: {confirm: 'Вы уверенны, что хотите очистить корзину?'} %> Всего: <%= number_to_currency(cart.total_price, unit: "грн.", separator: ",", delimiter: "", format: "%n %u") %></p>
+  
+  

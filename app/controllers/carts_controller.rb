@@ -73,7 +73,7 @@ class CartsController < ApplicationController
       session[:cart_id] = nil  
     end    
     respond_to do |format|
-      format.html { redirect_to store_url, notice: 'Ваша корзина была очищена' }
+      format.html { redirect_to store_url }
       format.json { head :no_content }
     end
   end

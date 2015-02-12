@@ -1,0 +1,19 @@
+<% line_item.each do |item| %>
+  <% if item == @current_item %>
+    <div class="container-fluid" id="current-item">
+  <% else %>
+    <div class="container-fluid">
+  <% end %>
+  <div class="row">
+      <div class="col-md-2">
+          <p><%= item.quantity %> x</p>
+      </div>
+      <div class="col-md-6">
+          <p><%= item.product.title %></p>
+      </div>
+      <div class="col-md-4">
+          <p class="text-center text-info"><%= number_to_currency(item.price, unit: "грн.", separator: ",", delimiter: "", format: "%n %u") %></p>
+      </div>
+  </div>
+</div>
+<% end %>
