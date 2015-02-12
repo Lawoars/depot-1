@@ -12,6 +12,18 @@ class CartsController < ApplicationController
   # GET /carts/1.json
   def show
     #session[:counter] += 1
+    if @cart.id != session[:cart_id]
+      if session[:cart_id] == nil
+        redirect_to store_url, notice: 'Неинициализированная корзина. Извините.'
+      else
+        redirect_to action: :show, id: session[:cart_id]
+      end
+    end
+    if @cart.line_items.empty?
+      @cart.destroy
+      session[:cart_id] = nil
+      redirect_to store_url, notice: 'Ваша корзина пуста'
+    end
   end
 
   # GET /carts/new

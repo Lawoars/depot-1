@@ -25,7 +25,7 @@ class CartsControllerTest < ActionController::TestCase
   end
 
   test "should show cart" do
-    get :show, id: @cart
+    get :show, id: @cart.id
     assert_response :success
   end
 

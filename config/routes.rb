@@ -4,7 +4,8 @@ Depot::Application.routes.draw do
   resources :carts
   
   #get 'cart/:id' => 'carts#view'
-
+  
+  #get 'line_items/:id' => 'line_items#destroy'
   get "store" => "store#index"
   resources :products
 
