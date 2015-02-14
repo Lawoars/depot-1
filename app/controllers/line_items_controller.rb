@@ -2,6 +2,16 @@ class LineItemsController < ApplicationController
   include CurrentCart
   before_action :set_cart, only: [:create]
   before_action :set_line_item, only: [:show, :edit, :update, :destroy]
+  
+  def current_cart
+    Cart.find(session[:cart_id])
+    rescue ActiveRecord::RecordNotFound 
+    begin
+      cart = Cart.create
+      session[:cart_id] = cart.id
+      cart # this will get returned
+    end
+  end
 
   # GET /line_items
   # GET /line_items.json
@@ -64,7 +74,7 @@ class LineItemsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_line_item

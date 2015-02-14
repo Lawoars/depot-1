@@ -2,6 +2,8 @@
   <p id="notice"><%= notice %></p>
   <%= render(partial: "line_items/line_item",locals: {line_item: @cart.line_items}) %>
   <h3 class="text-primary text-right">Всего: <%= number_to_currency(@cart.total_price, unit: "грн.", separator: ",", delimiter: "", format: "%n %u") %></h3>
-  <%= button_to 'Очистить корзину', @cart, method: :delete, class: 'btn btn-warning', data: {confirm: 'Вы уверенны, что хотите очистить корзину?'} %>
-
+  <%= link_to 'Очистить корзину', @cart, method: :delete, class: 'btn btn-warning text-left', data: {confirm: 'Вы уверенны, что хотите очистить корзину?'} %>
+  <%= link_to 'Оформить заказ', new_order_path, class: 'btn btn-primary text-right', method: :get %>
+<br/>
 <%= link_to 'Продолжить покупки', store_path %>
+  <br/>
