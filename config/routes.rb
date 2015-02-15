@@ -1,4 +1,6 @@
 Depot::Application.routes.draw do
+  resources :pay_types
+
   resources :orders
 
   resources :line_items do
@@ -12,7 +14,9 @@ Depot::Application.routes.draw do
   
   #get 'line_items/:id' => 'line_items#destroy'
   get "store" => "store#index"
-  resources :products
+  resources :products do
+    get :who_bought, on: :member
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

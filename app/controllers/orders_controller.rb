@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   include CurrentCart
+  include CurrentPayTypes
   before_action :set_order, only: [:show, :edit, :update, :destroy]
   before_action :set_cart, only: [:new, :create]
 
@@ -20,6 +21,7 @@ class OrdersController < ApplicationController
       redirect_to store_url, notice: 'Для оформления заказа поместите товар в корзину'
       return
     end
+    @pay_types = get_pay_types
     @order = Order.new
   end
 
