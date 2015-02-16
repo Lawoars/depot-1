@@ -1,0 +1,33 @@
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> Сведенья об этом пользователе не могут быть сохранены:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <fieldset>
+      <legend>Введите сведения о пользователе</legend>
+
+  <div class="field form-group">
+    <%= f.label :name, 'Имя' %><br>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+  <div class="field form-group">
+    <%= f.label :password, 'Пароль' %><br>
+    <%= f.password_field :password, class: "form-control" %>
+  </div>
+  <div class="field form-group">
+    <%= f.label :password_confirmation, 'Подтверждение пароля' %><br>
+    <%= f.password_field :password_confirmation, class: "form-control" %>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Добавить пользователя', class: 'btn btn-default' %>
+  </div>
+    </fieldset>
+<% end %>

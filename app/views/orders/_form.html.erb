@@ -25,7 +25,7 @@
   </div>
   <div class="field form-group">
     <%= f.label :pay_type %><br>
-    <%= f.select :pay_type, @pay_types, promt: 'Выберите способ оплаты' %>
+    <%= f.select :pay_type, @pay_types, promt: 'Выберите способ оплаты', class: "form-control" %>
   </div>
   <div class="actions">
     <%= f.submit 'Оформить заказ', class: 'btn btn-default' %>
