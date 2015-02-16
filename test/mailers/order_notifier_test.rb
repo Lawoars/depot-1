@@ -2,19 +2,19 @@ require 'test_helper'
 
 class OrderNotifierTest < ActionMailer::TestCase
   test "received" do
-    mail = OrderNotifier.received
-    assert_equal "Received", mail.subject
-    assert_equal ["to@example.org"], mail.to
-    assert_equal ["from@example.com"], mail.from
-    assert_match "Hi", mail.body.encoded
+    mail = OrderNotifier.received(orders(:one))
+    assert_equal "Подтверждение заказа в магазине Никиток", mail.subject
+    assert_equal ["dave@example.org"], mail.to
+    assert_equal ["nikitasosnov92@gmail.com"], mail.from
+    assert_match "Уважаемый", mail.body.encoded
   end
 
   test "shipped" do
-    mail = OrderNotifier.shipped
-    assert_equal "Shipped", mail.subject
-    assert_equal ["to@example.org"], mail.to
-    assert_equal ["from@example.com"], mail.from
-    assert_match "Hi", mail.body.encoded
+    mail = OrderNotifier.shipped(orders(:one))
+    assert_equal "Заказ из магазина Никиток отправлен!", mail.subject
+    assert_equal ["dave@example.org"], mail.to
+    assert_equal ["nikitasosnov92@gmail.com"], mail.from
+    #assert_match "Hi", mail.body.encoded
   end
 
 end

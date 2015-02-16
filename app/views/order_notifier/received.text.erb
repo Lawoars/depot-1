@@ -1,3 +1,7 @@
-OrderNotifier#received
+Уважаемый <%= @order.name %>
 
-<%= @greeting %>, find me in app/views/app/views/order_notifier/received.text.erb
+Благодарим вас за заказ в лучшем в мире магазине Никиток для Никиток! Вы заказали следующие товары:
+
+<%= render @order.line_items %>
+
+Пока это всё!
