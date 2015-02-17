@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
-
+  http_basic_authenticate_with name: 'nikitasmall', password: '23717', only: :who_bought
+  skip_before_action :authorize, only: :who_bought
   # GET /products
   # GET /products.json
   def index

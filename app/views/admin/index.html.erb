@@ -1,3 +1,4 @@
-<h3>Добро пожаловать, <%= @user.name %></h3>
+<h3 class="text-info">Добро пожаловать, <% if session[:user_id] != -1%><%= @user.name %><% else %>новый пользователь<% end %>.</h3>
 
-<p>У нас имеется <%= pluralize(@total_orders, "заказ") %>.</p>
+<p class="text-justify">У нас имеется <%= pluralize(@total_orders, "заказ") %>.</p>
+<% if @user.nil? %><p class="text-warning">Поспешите создать полноценного пользователя!</p><%end%>

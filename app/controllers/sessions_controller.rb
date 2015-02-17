@@ -8,6 +8,9 @@ class SessionsController < ApplicationController
     if user and user.authenticate(params[:password])
       session[:user_id] = user.id
       redirect_to admin_url
+    elsif User.count == 0
+      session[:user_id] = -1
+      redirect_to admin_url
     else
       redirect_to login_url, notice: 'Неправильный логин или пароль'
     end
