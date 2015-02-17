@@ -29,9 +29,15 @@
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                   <ul class="nav nav-pills nav-stacked">
                     <li <% if(controller.controller_name == 'store')  %> class="active"<% end %> role="presentation"><%= link_to 'Каталог', store_path %> </li>
-                    <li <% if(controller.controller_name == 'products')  %> class="active"<% end %> role="presentation"><%= link_to 'Управление товарами', products_path %></li>
                     <li id="cart-link"<% if(controller.controller_name == 'carts')  %> class="active"<% end %> role="presentation"><%= link_to 'Корзина', cart_path(session[:cart_id]) %></li>
-                    
+                    <% if session[:user_id]%>
+                        <li <% if(controller.controller_name == 'products')  %> class="active"<% end %> role="presentation"><%= link_to 'Управление товарами', products_path %></li>
+                        <li <% if(controller.controller_name == 'orders')  %> class="active"<% end %> role="presentation"><%= link_to 'Заказы', orders_path %></li>
+                        <li <% if(controller.controller_name == 'users')  %> class="active"<% end %> role="presentation"><%= link_to 'Пользователи', users_path %></li>
+                        <li <% if(controller.controller_name == 'sessions')  %> class="active"<% end %> role="presentation"><%= link_to 'Разлогиниться', logout_path, method: :delete %></li>
+                    <% else %>
+                        <li <% if(controller.controller_name == 'sessions')  %> class="active"<% end %> role="presentation"><%= link_to 'Залогиниться', login_path %></li>
+                    <% end %>
                   </ul>
                 </div><!-- /.navbar-collapse -->
               </nav>

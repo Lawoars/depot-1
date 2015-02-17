@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   
   before_filter :getTime, :getCart
+
+  before_action :authorize
   
   protected
   def getTime 
@@ -15,5 +17,12 @@ class ApplicationController < ActionController::Base
       @cart = Cart.find(session[:cart_id])
     end
     
+  end
+
+  protected
+  def authorize
+    unless User.find_by(id: session[:user_id])
+      redirect_to login_url, notice: 'Пройдите авторизацию, пожалуйста.'
+    end
   end
 end
