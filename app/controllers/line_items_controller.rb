@@ -10,7 +10,7 @@ class LineItemsController < ApplicationController
     begin
       cart = Cart.create
       session[:cart_id] = cart.id
-      cart # this will get returned
+      return cart # this will get returned
     end
   end
 

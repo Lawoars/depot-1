@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   
   before_filter :getTime, :getCart
 
-  before_action :authorize
+  before_action :authorize, :set_i18n_locale_from_params
   
   protected
   def getTime 
@@ -26,6 +26,20 @@ class ApplicationController < ActionController::Base
         redirect_to login_url, notice: 'Пройдите авторизацию, пожалуйста.'
       end
     end
+  end
 
+  def set_i18n_locale_from_params
+    if params[:locale]
+      if I18n.available_locales.map(&:to_s).include?(params[:locale])
+        I18n.locale = params[:locale]
+      else
+        flash.now[:notice] = "#{params[:locale]} перевод недоступен"
+        logger.error flash.now[:notice]
+      end
+    end
+  end
+
+  def default_url_options
+    {locale: I18n.locale}
   end
 end

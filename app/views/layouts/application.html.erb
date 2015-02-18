@@ -11,8 +11,8 @@
       <div class="banner">
         <div class="container">
             
-            <h1 class="text-right"><%= image_tag ('logo.png') %> <%= @page_title || 'Личный магазин Его высочества Никитки' %></h1>
-            <p class="text-right"><%= @page_subtitle || "Все доходы идут на улучшение жизни Никиток мира." %></p>
+            <h1 class="text-right"><%= image_tag ('logo.png') %> <%= @page_title || t('.title') %></h1>
+            <p class="text-right"><%= @page_subtitle || t('.subtitle') %></p>
         </div>
       </div>
       
@@ -23,25 +23,25 @@
             </div>
             
             <div class="col-md-3">
-                <h2>Разделы</h2>
+                <h2><%= t('.categories') %></h2>
                 <nav class="navbar navbar-default" role="navigation">
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                   <ul class="nav nav-pills nav-stacked">
-                    <li <% if(controller.controller_name == 'store')  %> class="active"<% end %> role="presentation"><%= link_to 'Каталог', store_path %> </li>
-                    <li id="cart-link"<% if(controller.controller_name == 'carts')  %> class="active"<% end %> role="presentation"><%= link_to 'Корзина', cart_path(session[:cart_id]) %></li>
+                    <li <% if(controller.controller_name == 'store')  %> class="active"<% end %> role="presentation"><%= link_to t('.catalogue'), store_path %> </li>
+                    <li id="cart-link"<% if(controller.controller_name == 'carts')  %> class="active"<% end %> role="presentation"><% if session[:cart_id] %><%= link_to t('.cart'), cart_path(session[:cart_id]) %><% end %></li>
                     <% if session[:user_id]%>
-                        <li <% if(controller.controller_name == 'products')  %> class="active"<% end %> role="presentation"><%= link_to 'Управление товарами', products_path %></li>
-                        <li <% if(controller.controller_name == 'orders')  %> class="active"<% end %> role="presentation"><%= link_to 'Заказы', orders_path %></li>
-                        <li <% if(controller.controller_name == 'users')  %> class="active"<% end %> role="presentation"><%= link_to 'Пользователи', users_path %></li>
-                        <li <% if(controller.controller_name == 'sessions')  %> class="active"<% end %> role="presentation"><%= link_to 'Разлогиниться', logout_path, method: :delete %></li>
+                        <li <% if(controller.controller_name == 'products')  %> class="active"<% end %> role="presentation"><%= link_to t('.products'), products_path %></li>
+                        <li <% if(controller.controller_name == 'orders')  %> class="active"<% end %> role="presentation"><%= link_to t('.orders'), orders_path %></li>
+                        <li <% if(controller.controller_name == 'users')  %> class="active"<% end %> role="presentation"><%= link_to t('.users'), users_path %></li>
+                        <li <% if(controller.controller_name == 'sessions')  %> class="active"<% end %> role="presentation"><%= link_to t('.logout'), logout_path, method: :delete %></li>
                     <% else %>
-                        <li <% if(controller.controller_name == 'sessions')  %> class="active"<% end %> role="presentation"><%= link_to 'Залогиниться', login_path %></li>
+                        <li <% if(controller.controller_name == 'sessions')  %> class="active"<% end %> role="presentation"><%= link_to t('.login'), login_path %></li>
                     <% end %>
                   </ul>
                 </div><!-- /.navbar-collapse -->
               </nav>
-                <h4 class='text-right'>Поздравляем вас, сейчас:<br/><small><%= @time %></small></h4>
+                <h4 class='text-right'><%= t('.time_now') %><br/><small><%= @time %></small></h4>
                 <div id="cart">
                     <% if @cart != nil %>
                       <%= render(@cart) %>

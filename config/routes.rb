@@ -10,14 +10,7 @@ Depot::Application.routes.draw do
 
   resources :pay_types
 
-  resources :orders
 
-  resources :line_items do
-      member do
-        put 'decrement'
-      end
-    end
-  resources :carts
   
   #get 'cart/:id' => 'carts#view'
   
@@ -31,7 +24,17 @@ Depot::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'store#index'
+  scope '(:locale)' do
+    resources :carts
+    resources :orders
+    resources :line_items do
+      member do
+        put 'decrement'
+      end
+    end
+    root 'store#index'
+  end
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

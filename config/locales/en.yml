@@ -21,3 +21,42 @@
 
 en:
   hello: "Hello world"
+
+  layouts:
+    application:
+      title: "Personal shop of His Majesty Nikitka"
+      subtitle: "All proceeds go to improving the lives of Nikitkas of the World."
+      categories: "Sections"
+      catalogue: "Catalogue"
+      cart: "Cart"
+      products: "Products"
+      orders: "Orders"
+      users: "Users"
+      logout: "Logout"
+      login: "Login"
+      time_now: "What time is it? It is"
+  carts:
+    cart:
+      cart: "Cart"
+      clear: "Clear cart"
+      total: "Total"
+      alert: "Do you want to truncate the cart?"
+    show:
+      cart: "Cart"
+      clear: "Clear cart"
+      total: "Total"
+      alert: "Do you want to truncate the cart?"
+      delete: "Delete"
+      mult: "pts."
+      checkout: "Checkout"
+      continue: "Continue shopping"
+
+  line_items:
+    line_item:
+      delete: "Delete record"
+      mult: "pts."
+
+  store:
+    index:
+      add: "Add to cart"
+      catalogue: "Catalogue"
