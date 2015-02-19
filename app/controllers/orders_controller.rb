@@ -35,6 +35,7 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.add_line_items_from_cart(@cart)
+    @pay_types = get_pay_types
 
     respond_to do |format|
       if @order.save
@@ -85,5 +86,15 @@ class OrdersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
       params.require(:order).permit(:name, :address, :email, :pay_type)
+    end
+
+    def current_cart
+      Cart.find(session[:cart_id])
+    rescue ActiveRecord::RecordNotFound
+      begin
+        cart = Cart.create
+        session[:cart_id] = cart.id
+        return cart # this will get returned
+      end
     end
 end

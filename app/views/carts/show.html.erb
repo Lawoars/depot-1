@@ -1,7 +1,7 @@
 <h3><%= t('.cart') %></h3>
   <p id="notice"><%= notice %></p>
   <%= render(partial: "line_items/line_item",locals: {line_item: @cart.line_items}) %>
-  <h3 class="text-primary text-right"><%= t('.total') %> <%= number_to_currency(@cart.total_price, unit: "грн.", separator: ",", delimiter: "", format: "%n %u") %></h3>
+  <h3 class="text-primary text-right"><%= t('.total') %> <%= number_to_currency(@cart.total_price) %></h3>
   <%= link_to t('.clear'), @cart, method: :delete, class: 'btn btn-warning text-left', data: {confirm: t('.alert')} %>
   <%= link_to t('.checkout'), new_order_path, class: 'btn btn-primary text-right', method: :get %>
 <br/>

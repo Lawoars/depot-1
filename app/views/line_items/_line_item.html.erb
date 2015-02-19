@@ -9,7 +9,7 @@
         <%= sanitize(item.product.description) %>
       </div>
       <div class="col-md-3">
-          <h3 class="text-center text-info"><%= number_to_currency(item.price, unit: "грн.", separator: ",", delimiter: "", format: "%n %u") %></h3>
+          <h3 class="text-center text-info"><%= number_to_currency(item.price) %></h3>
           <h3 class="text-center text-info"><%= item.quantity %> <%= t('.mult') %> </h3>
           <%= button_to t('.delete'), item, method: :delete, class: 'btn btn-danger btn-block' %>
       </div>

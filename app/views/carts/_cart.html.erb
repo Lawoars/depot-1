@@ -2,6 +2,6 @@
 
   <%= render(partial: "line_items/line_item_small",locals: {line_item: cart.line_items}) %>
 
-<p class="text-right"><%= link_to t('.clear'), @cart, method: :delete, class: 'btn btn-warning btn-xs', data: {confirm: t('.alert')}, :remote => true %> <%= t('.total') %>: <%= number_to_currency(cart.total_price, unit: "грн.", separator: ",", delimiter: "", format: "%n %u") %></p>
+<p class="text-right"><%= link_to t('.clear'), @cart, method: :delete, class: 'btn btn-warning btn-xs', data: {confirm: t('.alert')}, :remote => true %> <%= t('.total') %>: <%= number_to_currency(cart.total_price) %></p>
   
   
