@@ -7,6 +7,6 @@ if($('#cart').val() == '') {
   $('#cart').html("<%= escape_javascript render(@cart) %>");
 }
 
-$('#cart-link').html("<%= escape_javascript link_to 'Корзина', cart_path(session[:cart_id]) %>");
+$('#cart-link').html("<%= escape_javascript link_to t('.cart'), cart_path(session[:cart_id]) %>");
 
 $('#current-item').css({'background-color':'#88ff88'}).animate({'background-color':'#FFF'}, 1000);

@@ -14,9 +14,14 @@ class ApplicationController < ActionController::Base
   
   def getCart
     if session[:cart_id]
-      @cart = Cart.find(session[:cart_id])
+      if Cart.find_by_id(session[:cart_id]) != nil
+        @cart = Cart.find(session[:cart_id])
+      else
+        session[:cart_id] = nil
+      end
+
     end
-    
+
   end
 
   protected

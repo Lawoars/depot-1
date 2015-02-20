@@ -56,6 +56,8 @@ en:
     line_item:
       delete: "Delete record"
       mult: "pts."
+    create:
+      cart: "Cart"
 
   store:
     index:
