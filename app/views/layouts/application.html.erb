@@ -10,7 +10,6 @@
     
       <div class="banner">
         <div class="container">
-            
             <h1 class="text-right"><%= image_tag ('logo.png') %> <%= @page_title || t('.title') %></h1>
             <p class="text-right"><%= @page_subtitle || t('.subtitle') %></p>
         </div>
@@ -18,7 +17,15 @@
       
     <div class="container-fluid">
         <div class ="row">
-            <div class="col-md-7 col-md-offset-2">
+              <div class="col-md-2">
+                <h3 style="margin-left: 25%;"><%= t('.locale') %></h3>
+                <%= form_tag store_path, class: 'form-inline locale', method: 'GET', style: "margin-left: 25%;" do %>
+                    <%= select_tag 'set_locale', options_for_select(LANGUAGES, I18n.locale.to_s), onchange: 'this.form.submit()', class: 'form-control' %>
+                    <%= submit_tag 'submit' %>
+                    <%= javascript_tag "$('.locale input').hide()"%>
+                <% end %>
+              </div>
+            <div class="col-md-7">
                 <%= yield %>
             </div>
             

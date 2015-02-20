@@ -35,6 +35,7 @@ qu:
       logout: "Разлогиниться"
       login: "Залогиниться"
       time_now: "Поздравляем вас, сейчас"
+      locale: "Choose your language"
   carts:
     cart:
       cart: "Корзина"

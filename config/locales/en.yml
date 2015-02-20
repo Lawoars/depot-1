@@ -35,6 +35,7 @@ en:
       logout: "Logout"
       login: "Login"
       time_now: "What time is it? It is"
+      locale: "Choose your language"
   carts:
     cart:
       cart: "Cart"
