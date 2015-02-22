@@ -4,9 +4,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.0'
 
 # Use sqlite3 as the database for Active Record
-# gem 'sqlite3'
-
-gem 'pg'
+gem 'sqlite3'
 
 # Use MySQL2 as the database for Active Record
 gem 'mysql2', '~> 0.3.17'
@@ -57,9 +55,6 @@ end
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
-  gem 'capistrano', '~> 3.1.0'
-  gem 'capistrano-bundler', '~> 1.1.2'
-  gem 'capistrano-rails', '~> 1.1.1'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
