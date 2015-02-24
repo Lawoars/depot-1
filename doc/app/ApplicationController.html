@@ -133,7 +133,7 @@
 
           
           <div class="method-source-code" id="authorize-source">
-            <pre><span class="ruby-comment"># File app/controllers/application_controller.rb, line 23</span>
+            <pre><span class="ruby-comment"># File app/controllers/application_controller.rb, line 28</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">authorize</span>
   <span class="ruby-keyword">if</span> <span class="ruby-constant">User</span>.<span class="ruby-identifier">count</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
     <span class="ruby-keyword">unless</span> <span class="ruby-constant">User</span>.<span class="ruby-identifier">find_by</span>(<span class="ruby-identifier">id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">session</span>[<span class="ruby-value">:user_id</span>])
@@ -170,7 +170,7 @@
 
           
           <div class="method-source-code" id="default_url_options-source">
-            <pre><span class="ruby-comment"># File app/controllers/application_controller.rb, line 42</span>
+            <pre><span class="ruby-comment"># File app/controllers/application_controller.rb, line 47</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">default_url_options</span>
   {<span class="ruby-identifier">locale</span><span class="ruby-operator">:</span> <span class="ruby-constant">I18n</span>.<span class="ruby-identifier">locale</span>}
 <span class="ruby-keyword">end</span></pre>
@@ -206,9 +206,14 @@
             <pre><span class="ruby-comment"># File app/controllers/application_controller.rb, line 15</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">getCart</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">session</span>[<span class="ruby-value">:cart_id</span>]
-    <span class="ruby-ivar">@cart</span> = <span class="ruby-constant">Cart</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">session</span>[<span class="ruby-value">:cart_id</span>])
+    <span class="ruby-keyword">if</span> <span class="ruby-constant">Cart</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">session</span>[<span class="ruby-value">:cart_id</span>]) <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+      <span class="ruby-ivar">@cart</span> = <span class="ruby-constant">Cart</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">session</span>[<span class="ruby-value">:cart_id</span>])
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">session</span>[<span class="ruby-value">:cart_id</span>] = <span class="ruby-keyword">nil</span>
+    <span class="ruby-keyword">end</span>
+
   <span class="ruby-keyword">end</span>
-  
+
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -272,7 +277,7 @@
 
           
           <div class="method-source-code" id="set_i18n_locale_from_params-source">
-            <pre><span class="ruby-comment"># File app/controllers/application_controller.rb, line 31</span>
+            <pre><span class="ruby-comment"># File app/controllers/application_controller.rb, line 36</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">set_i18n_locale_from_params</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:locale</span>]
     <span class="ruby-keyword">if</span> <span class="ruby-constant">I18n</span>.<span class="ruby-identifier">available_locales</span>.<span class="ruby-identifier">map</span>(<span class="ruby-operator">&amp;</span><span class="ruby-value">:to_s</span>).<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:locale</span>])
